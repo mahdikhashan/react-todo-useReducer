@@ -34,7 +34,6 @@ const newTodo = (name) => {
   return { id: Date.now(), name: name, complete: false }
 }
 
-
 const Todo = ({ todo, dispatch }) => {
   const [editTodo, setEditTodo] = useState(false)
 
