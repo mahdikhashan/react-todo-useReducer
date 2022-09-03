@@ -35,7 +35,7 @@ const newTodo = (name) => {
 }
 
 const Todo = ({ todo, dispatch }) => {
-  const [editTodo, setEditTodo] = useState(false)
+  // const [editTodo, setEditTodo] = useState(false)
 
   return (
     <>
