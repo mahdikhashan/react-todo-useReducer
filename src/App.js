@@ -17,7 +17,12 @@ const reducer = (todos, action) => {
       return todos.filter(todo => todo.id !== action.payload.id)
     case ACTIONS.UPDATE_TODO:
       // update to-do to the state
-      return 0
+      return todos.map(todo => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, name: action.payload.name }
+        }
+        return todo
+      })
     case ACTIONS.DONE_TODO:
       return todos.map(todo => {
         if (todo.id === action.payload.id) {
@@ -35,19 +40,39 @@ const newTodo = (name) => {
 }
 
 const Todo = ({ todo, dispatch }) => {
-  // const [editTodo, setEditTodo] = useState(false)
+  const [editTodo, setEditTodo] = useState(false)
+  const [item, setItem] = useState(todo.name)
+
+  const editItem = () => {
+    dispatch({ type: ACTIONS.UPDATE_TODO, payload: { id: todo.id, name: item } })
+    setEditTodo(false)
+  }
 
   return (
     <>
       <div>
-        <span style={{ color: todo.complete ? '#00FF00' : '#ff0000' }}>
-          { todo.name }
-        </span>
-        <button onClick={() => dispatch({ type: ACTIONS.UPDATE_TODO, payload: { id: todo.id } })}>update</button>
-        <button onClick={() => dispatch({ type: ACTIONS.DONE_TODO, payload: { id: todo.id } })}>
-          { todo.complete ? 'undone' : 'done' }
-        </button>
-        <button onClick={() => dispatch({ type: ACTIONS.REMOVE_TODO, payload: { id: todo.id } })}>delete</button>
+        {
+          editTodo ?
+            <div>
+              <input type="text" value={item} onChange={(e) => setItem(e.target.value)} />
+              <button onClick={editItem}>update</button>
+              <button onClick={() => setEditTodo(false)}>back</button>
+            </div>
+          :
+         <div>
+            <span style={{
+              color: todo.complete ? '#535353' : '#00c2ff',
+              textDecoration: todo.complete ? 'line-through' : ''
+            }}>
+              { todo.name }
+            </span>
+            <button onClick={() => setEditTodo(true)}>edit</button>
+            <button onClick={() => dispatch({ type: ACTIONS.DONE_TODO, payload: { id: todo.id } })}>
+              { todo.complete ? 'undone' : 'done' }
+            </button>
+            <button onClick={() => dispatch({ type: ACTIONS.REMOVE_TODO, payload: { id: todo.id } })}>delete</button>
+         </div>
+        }
       </div>
     </>
   )
