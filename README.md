@@ -10,7 +10,7 @@ const [todos, dispatch] = useReducer(reducer, [])
 so, easy-peasy, not? Then how to add value(s) to our empty state? right, we need to call ```dispatch``` function 
 with our ```action``` and pass ```payload``` to it.
 
-### What's a dispatch function looks like?
+### What's a dispatch function look like?
 ```javascript
 dispatch({ type: ACTIONS.ADD_TODO, payload: { name: item } })
 ```
@@ -29,7 +29,7 @@ const ACTIONS = {
 
 ### Reducer
 And finally, we will define our logic in a reducer method. Passing the state object, here `todos`, 
-and commands `action` passed as arguments. Don't forget to set a default value if you used swtich-case login.
+and commands `action` are arguments. Don't forget to set a default value if you used swtich-case logic.
 ```javascript
 const reducer = (todos, action) => {
   switch (action.type) {
