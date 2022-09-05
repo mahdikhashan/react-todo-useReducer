@@ -10,7 +10,7 @@ const [todos, dispatch] = useReducer(reducer, [])
 so, easy-peasy, not? Then how to add value(s) to our empty state? right, we need to call ```dispatch``` function 
 with our ```action``` and pass ```payload``` to it.
 
-### What a dispatch function looks like?
+### What's a dispatch function looks like?
 ```javascript
 dispatch({ type: ACTIONS.ADD_TODO, payload: { name: item } })
 ```
