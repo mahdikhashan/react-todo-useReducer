@@ -4,8 +4,8 @@ ENV NODE_ENV development
 WORKDIR /app
 # Cache and Install dependencies
 COPY package.json .
-COPY package-lock.json .
-RUN npm i
+COPY yarn.lock .
+RUN yarn
 # Copy app files
 COPY . .
 # Expose port
