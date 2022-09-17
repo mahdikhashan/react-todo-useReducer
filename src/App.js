@@ -51,7 +51,7 @@ const Todo = ({ todo, dispatch }) => {
 
   return (
     <>
-      <div>
+      <div className='todo-row'>
         {
           editTodo ?
             <div>
@@ -95,11 +95,13 @@ function App() {
         <input type="text" value={item} name='new' onChange={(e) => setItem(e.target.value)} />
         <button type={"submit"} name='add-item' onClick={handleSubmit}>add</button>
       </form>
-      {
-        todos.map( todo => {
-          return <Todo todo={todo} dispatch={dispatch} />
-        })
-      }
+      <main className='todo'>
+        {
+          todos.map( todo => {
+            return <Todo todo={todo} dispatch={dispatch} />
+          })
+        }
+      </main>
     </div>
   );
 }
