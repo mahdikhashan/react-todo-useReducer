@@ -1,10 +1,10 @@
-name: Test
+name: E2E Test
 on:
   push
   schedule:
     cron: '30 5,17 * * *'
 jobs:
-  E2E-test:
+  e2e-test:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout

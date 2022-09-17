@@ -1,6 +1,5 @@
-name: Test
-on:
-  - push
+name: Unit Test
+on: [push]
 jobs:
   unit-test:
     runs-on: ubuntu-20.04
