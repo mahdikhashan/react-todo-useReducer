@@ -1,0 +1,11 @@
+name: release-docker-image
+on:
+  - push
+jobs:
+  release-image:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker build . -t mahdikhashan/react-learning-path
+      - run: docker login -u ${{secrets.DOCKER_USERNAME}} --password ${{secrets.DOCKER_PASSWORD}}
+      - run: docker push mahdikhashan/react-learning-path
