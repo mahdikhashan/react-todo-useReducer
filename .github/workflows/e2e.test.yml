@@ -1,8 +1,7 @@
 name: E2E Test
 on:
-  push
   schedule:
-    cron: '30 5,17 * * *'
+    - cron: "0 12 * * *"
 jobs:
   e2e-test:
     runs-on: ubuntu-20.04
