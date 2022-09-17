@@ -104,3 +104,7 @@ function App() {
 }
 
 export default App;
+export {
+  Todo,
+  newTodo
+}
