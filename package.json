@@ -11,7 +11,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "^2.1.3",
     "web-vitals": "^2.1.4",
-    "cypress": "latest"
+    "cypress": "latest",
+    "rgb-hex": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
