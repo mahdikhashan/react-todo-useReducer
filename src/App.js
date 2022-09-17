@@ -54,9 +54,9 @@ const Todo = ({ todo, dispatch }) => {
         {
           editTodo ?
             <div>
-              <input type="text" value={item} onChange={(e) => setItem(e.target.value)} />
-              <button onClick={editItem}>update</button>
-              <button onClick={() => setEditTodo(false)}>back</button>
+              <input type="text" name='edit' value={item} onChange={(e) => setItem(e.target.value)} />
+              <button name='update-item' onClick={editItem}>update</button>
+              <button name='back' onClick={() => setEditTodo(false)}>back</button>
             </div>
           :
          <div>
@@ -66,11 +66,11 @@ const Todo = ({ todo, dispatch }) => {
             }}>
               { todo.name }
             </span>
-            <button onClick={() => setEditTodo(true)}>edit</button>
-            <button onClick={() => dispatch({ type: ACTIONS.DONE_TODO, payload: { id: todo.id } })}>
+            <button name='edit-item' onClick={() => setEditTodo(true)}>edit</button>
+            <button name='toggle-item' onClick={() => dispatch({ type: ACTIONS.DONE_TODO, payload: { id: todo.id } })}>
               { todo.complete ? 'undone' : 'done' }
             </button>
-            <button onClick={() => dispatch({ type: ACTIONS.REMOVE_TODO, payload: { id: todo.id } })}>delete</button>
+            <button name='delete-item' onClick={() => dispatch({ type: ACTIONS.REMOVE_TODO, payload: { id: todo.id } })}>delete</button>
          </div>
         }
       </div>
@@ -91,8 +91,8 @@ function App() {
   return (
     <div className="App">
       <form>
-        <input type="text" value={item} onChange={(e) => setItem(e.target.value)} />
-        <button type={"submit"} onClick={handleSubmit}>add</button>
+        <input type="text" value={item} name='new' onChange={(e) => setItem(e.target.value)} />
+        <button type={"submit"} name='add-item' onClick={handleSubmit}>add</button>
       </form>
       {
         todos.map( todo => {
