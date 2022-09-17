@@ -1,3 +1,4 @@
+import React from 'react';
 import { useReducer, useState } from "react";
 import './App.css';
 
